@@ -1,0 +1,117 @@
+.navbar {
+  width: 100%;
+  color: white;
+  font-size: 14px;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.3) 50%);
+
+  &.scrolled {
+    background-color: var(--main-color);
+  }
+
+  .container {
+    padding: 0px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+
+    .left {
+      display: flex;
+      align-items: center;
+
+      span {
+        margin-right: 20px;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 600;
+        &:hover {
+          color: #45a049; /* Màu khi hover */
+          transform: translateY(-1px); /* Hiệu ứng di chuyển lên */
+        }
+
+        /* Hiệu ứng khi nhấn vào */
+        &:active {
+          color: #3e8e41; /* Màu khi nhấn */
+          transform: translateY(0); /* Trả lại vị trí ban đầu */
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      .premium {
+        padding: 10px 20px;
+        background-color: green; /* Sử dụng màu xanh đậm hơn */
+        color: white;
+        font-size: 16px; /* Tăng kích thước chữ */
+        font-weight: bold; /* Chữ đậm */
+        border: none;
+        border-radius: 5px; /* Làm tròn góc */
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        /* Hiệu ứng khi di chuột */
+        &:hover {
+          background-color: #45a049; /* Màu khi hover */
+          transform: translateY(-1px); /* Hiệu ứng di chuyển lên */
+        }
+
+        /* Hiệu ứng khi nhấn vào */
+        &:active {
+          background-color: #3e8e41; /* Màu khi nhấn */
+          transform: translateY(0); /* Trả lại vị trí ban đầu */
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+      }
+      .icon {
+        margin: 0px 15px;
+        cursor: pointer;
+        &:hover {
+          color: #45a049; /* Màu khi hover */
+          transform: translateY(-1px); /* Hiệu ứng di chuyển lên */
+        }
+
+        /* Hiệu ứng khi nhấn vào */
+        &:active {
+          color: #3e8e41; /* Màu khi nhấn */
+          transform: translateY(0); /* Trả lại vị trí ban đầu */
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        object-fit: cover;
+        cursor: pointer;
+      }
+
+      .profile {
+        .options {
+          display: none;
+          background-color: var(--main-color);
+          border-radius: 5px;
+        }
+
+        span {
+          padding: 10px;
+          cursor: pointer;
+        }
+
+        &:hover {
+          .options {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+          }
+        }
+      }
+    }
+  }
+}
