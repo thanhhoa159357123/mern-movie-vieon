@@ -1,0 +1,199 @@
+.user {
+  flex: 4;
+  padding: 20px;
+  background-color: #f5f5f5; /* Thêm màu nền để làm nổi bật */
+}
+/* Styling for the "Quay lại" text */
+.backLink {
+  font-size: 18px;
+  font-weight: 500;
+  color: #009688; /* Teal color */
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-decoration: none; /* Remove underline if it's a link */
+}
+
+.backLink:hover {
+  color: #00796b; /* Darker teal for hover effect */
+  text-decoration: underline; /* Underline on hover for better interaction */
+}
+
+.userTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.userAddButton {
+  width: 120px;
+  border: none;
+  padding: 8px;
+  background-color: #009688; /* Đổi màu cho nút */
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.userAddButton:hover {
+  background-color: #00796b; /* Thêm hiệu ứng hover cho nút */
+}
+
+.userContainer {
+  display: flex;
+  margin-top: 20px;
+}
+
+.userShow {
+  flex: 1;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Làm mờ bóng để tạo hiệu ứng chiều sâu */
+  border-radius: 8px;
+}
+
+.userUpdate {
+  flex: 2;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Làm mờ bóng */
+  margin-left: 20px;
+  border-radius: 8px;
+}
+
+.userShowTop {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.userShowImg {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.userShowTopTitle {
+  display: flex;
+  flex-direction: column;
+}
+
+.userShowUsername {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.userShowBottom {
+  margin-top: 20px;
+}
+
+.userShowTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(175, 170, 170);
+  margin-bottom: 10px;
+}
+
+.userShowInfo {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  color: #444;
+}
+
+.userShowIcon {
+  font-size: 20px;
+  color: teal; /* Thêm màu cho icon */
+}
+
+.userShowInfoTitle {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.userUpdateTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.userUpdateForm {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.userUpdateItem {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.userUpdateItem > label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.userUpdateInput {
+  border: none;
+  width: 100%;
+  height: 35px;
+  padding-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.userUpdateInput:focus {
+  outline: none;
+  border: 1px solid #009688; /* Thêm hiệu ứng khi focus vào input */
+}
+
+.userUpdateRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.userUpdateUpload {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.userUpdateImg {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 20px;
+  border: 2px solid #f1f1f1;
+}
+
+.userUpdateIcon {
+  cursor: pointer;
+  color: #009688; /* Thêm màu cho icon */
+}
+
+.userUpdateButton {
+  border-radius: 5px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: darkblue;
+  color: white;
+  font-weight: 600;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.userUpdateButton:hover {
+  background-color: #005f87; /* Thêm hiệu ứng hover cho nút update */
+}

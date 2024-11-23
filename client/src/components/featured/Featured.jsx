@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Info, PlayArrow } from "@mui/icons-material";
 import "../featured/featured.scss";
 import axios from "axios";
 
@@ -9,21 +8,25 @@ const Featured = ({ type, setGenre }) => {
   useEffect(() => {
     const getRandomContent = async () => {
       try {
-        if (!type) return; // Nếu type không có giá trị, không thực hiện yêu cầu.
-        const res = await axios.get(`/movies/random?type=${type}`, {
+        // Nếu `type` không có giá trị, lấy phim ngẫu nhiên từ bất kỳ loại nào.
+        const url = type
+          ? `/movies/random?type=${type}`
+          : "/movies/random"; // Không có `type` => lấy tất cả
+        const res = await axios.get(url, {
           headers: {
             token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MzIxM2I3ODMwMzEwMzgyZTI4M2E2NyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTczMTQyMTE0NywiZXhwIjoxNzMxODUzMTQ3fQ.hoWpL8FH3F1QxtokNnHFyeEEu7yw9NoOcc4u4dv_Ea4",
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
           },
         });
-        setContent(res.data[0]);
+        setContent(res.data[0]); // Đặt dữ liệu ngẫu nhiên
       } catch (err) {
-        console.log(err);
+        console.error("Error fetching random content:", err);
       }
     };
 
     getRandomContent();
   }, [type]);
+
   return (
     <div className="featured">
       {type && (
@@ -45,28 +48,15 @@ const Featured = ({ type, setGenre }) => {
             <option value="sci-fi">Sci-fi</option>
             <option value="thriller">Thriller</option>
             <option value="western">Western</option>
-            <option value="animation">Animation</option>
+            <option value="cartoon">Cartoon</option>
             <option value="drama">Drama</option>
             <option value="documentary">Documentary</option>
           </select>
         </div>
       )}
-      <img
-        src="https://images.unsplash.com/photo-1516117172878-fd2c41f4a759"
-        alt="Avatar Movie Poster"
-      />
+      <img src={content.img} alt="Movie Poster" />
       <div className="info">
         <span className="desc">{content.desc}</span>
-        <div className="buttons">
-          <button className="play">
-            <PlayArrow />
-            <span>Xem phim</span>
-          </button>
-          <button className="more">
-            <Info />
-            <span>Chi tiết</span>
-          </button>
-        </div>
       </div>
     </div>
   );

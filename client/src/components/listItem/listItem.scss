@@ -2,15 +2,25 @@
   width: 225px;
   height: 120px;
   background-color: var(--main-color);
-  margin-right: 5px;
+  margin-right: 20px; // Cách nhau 20px
   overflow: hidden;
   cursor: pointer;
   color: white;
+  position: relative; // Giữ vị trí tương đối
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  // Phóng to toàn bộ khi hover
+  &:hover {
+    transform: scale(1.1); // Phóng to
+    z-index: 10; // Đảm bảo hover không bị chồng lớp
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+  }
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease; // Smooth zoom for image
   }
 
   video {
@@ -20,62 +30,11 @@
     position: absolute;
     top: 0;
     left: 0;
+    opacity: 0; // Ẩn video mặc định
+    transition: opacity 0.3s ease;
   }
 
-  &:hover {
-    width: 325px;
-    height: 300px;
-    position: absolute;
-    top: -150px;
-    -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
-    box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
-    border-radius: 5px;
-
-    img {
-      height: 140px;
-    }
-
-    .itemInfo {
-      display: flex;
-      flex-direction: column;
-      padding: 5px;
-
-      .icons {
-        display: flex;
-        margin-bottom: 10px;
-
-        .icon {
-          border: 2px solid white;
-          padding: 5px;
-          border-radius: 50%;
-          margin-right: 10px;
-          font-size: 16px;
-        }
-      }
-      .itemInfoTop {
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-        font-size: 14px;
-        font-weight: 600;
-        color: gray;
-
-        .limit {
-          border: 1px solid gray;
-          padding: 1px 3px;
-          margin: 0 10px;
-        }
-      }
-
-      .desc {
-        font-size: 13px;
-        margin-bottom: 10px;
-      }
-
-      .genre {
-        font-size: 14px;
-        color: lightgray;
-      }
-    }
+  &:hover video {
+    opacity: 1; // Hiện video khi hover
   }
 }

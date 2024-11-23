@@ -8,81 +8,93 @@
     ),
     url("../../assets/bg_login_vieon.png");
   background-size: cover;
-  position: relative;
+  background-position: center;
+  flex-direction: column;
+  align-items: center;
 
   .top {
-    .wrapper {
-      padding: 20px 50px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    padding: 20px 30px;
 
-      .logo {
-        height: 40px;
-      }
-
-      .loginButton {
-        background-color: red;
-        border: none;
-        color: white;
-        border-radius: 5px;
-        padding: 5px 15px;
-        font-size: 16px;
-        font-weight: 500;
-        cursor: pointer;
+    .link {
+      text-decoration: none; /* Loại bỏ gạch chân */
+      span {
+        color: green;
+        font-size: 40px;
+        margin-left: 20px;
+        font-weight: bold;
       }
     }
   }
 
   .container {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    color: white;
+    margin-top: 30px;
+    align-items: center;
+    width: 100%;
 
-    h1 {
-      font-size: 50px;
-    }
-
-    h2 {
-      margin: 20px;
-    }
-
-    p {
-      font-size: 20px;
-    }
-
-    .input {
-      width: 50%;
-      background-color: white;
+    form {
+      padding: 30px; /* Thêm khoảng cách bên trong */
+      border-radius: 10px; /* Bo góc khung */
+      background-color: var(--main-color); /* Nền đen trong suốt */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Đổ bóng */
+      width: 100%;
+      max-width: 400px; /* Giới hạn độ rộng */
       display: flex;
+      gap: 15px; /* Khoảng cách giữa các input */
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      margin-top: 20px;
-      height: 50px;
-      border-radius: 5px;
 
-      input{
-          flex: 9;
-          height: 100%;
-          border: none;
-          padding: 0 10px;
+      p {
+        font-size: 24px;
+        color: white;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center; /* Căn giữa nội dung */
       }
 
-      .registerButton{
-          flex: 3;
-          height: 100%;
-          background-color: red;
-          border: none;
-          color: white;
-          font-size: 22px;
-          cursor: pointer;
+      input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid rgba(255, 255, 255, 0.5); /* Đường viền nhẹ */
+        border-radius: 5px; /* Bo góc input */
+        background-color: transparent; /* Nền trong suốt */
+        color: white; /* Màu chữ */
+        font-size: 16px;
+
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.7); /* Màu placeholder */
+        }
+
+        &:focus {
+          outline: none; /* Loại bỏ viền mặc định */
+          border-color: white; /* Đổi màu viền khi focus */
+        }
+      }
+
+      span {
+        color: white;
+        .login_page {
+          &:hover {
+            color: green;
+          }
+        }
+      }
+      .registerButton {
+        padding: 12px;
+        width: 100%;
+        background-color: green;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: rgb(29, 78, 16); /* Đổi màu khi hover */
+        }
       }
     }
   }

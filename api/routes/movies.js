@@ -115,4 +115,21 @@ router.get("/", verify, async (req, res) => {
   }
 });
 
+// Get movies by namemovie
+router.get("/search", async (req, res) => {
+  const query = req.query.q; // Lấy từ khóa tìm kiếm từ query parameter
+  try {
+    // Sử dụng regex để tìm kiếm tiêu đề chứa từ khóa (không phân biệt chữ hoa/thường)
+    const movies = await Movie.find({ title: { $regex: query, $options: "i" } });
+
+    if (movies.length === 0) {
+      return res.status(404).json({ message: "Không tìm thấy phim phù hợp!" });
+    }
+
+    res.status(200).json(movies); // Trả về danh sách phim
+  } catch (error) {
+    res.status(500).json({ message: "Lỗi khi tìm kiếm phim!", error });
+  }
+});
+
 module.exports = router;

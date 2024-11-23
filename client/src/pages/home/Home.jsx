@@ -2,16 +2,14 @@ import Navbar from "../../components/navbar/Navbar";
 import Featured from "../../components/featured/Featured";
 import "./home.scss";
 import List from "../../components/list/List";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { AuthContext } from "../../authContext/AuthContext";
 
 const Home = ({ type }) => {
-  const location = useLocation();
-  const phonenumber = location.state?.phonenumber;
+  const { user } = useContext(AuthContext);
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(null);
-
   useEffect(() => {
     const getRandomLists = async () => {
       try {
@@ -22,7 +20,8 @@ const Home = ({ type }) => {
           {
             headers: {
               token:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MzIxM2I3ODMwMzEwMzgyZTI4M2E2NyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTczMTQyMTE0NywiZXhwIjoxNzMxODUzMTQ3fQ.hoWpL8FH3F1QxtokNnHFyeEEu7yw9NoOcc4u4dv_Ea4",
+                "Bearer " +
+                JSON.parse(localStorage.getItem("user")).accessToken,
             },
           }
         );
@@ -36,10 +35,10 @@ const Home = ({ type }) => {
 
   return (
     <div className="home">
-      <Navbar phoneNumber={phonenumber} />
+      <Navbar user={user} />
       <Featured type={type} setGenre={setGenre} />
       {lists.map((list) => (
-        <List list={list} />
+        <List list={list} user={user} />
       ))}
     </div>
   );

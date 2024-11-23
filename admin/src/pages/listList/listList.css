@@ -1,0 +1,113 @@
+/* Kiểu dáng cho danh sách sản phẩm */
+.productList {
+  flex: 4;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Kiểu dáng cho các nút bộ lọc */
+.filterButtons {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.filterButton {
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.filterButton:hover {
+  background-color: #d6d6d6;
+}
+
+.filterButton.active {
+  background-color: #3bb077;
+  color: white;
+}
+
+/* Kiểu dáng từng hàng trong danh sách */
+.productListItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s;
+}
+
+.productListItem:hover {
+  background-color: #f1f1f1;
+}
+
+/* Hình ảnh nhỏ trong danh sách */
+.productListImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+}
+
+/* Nút chỉnh sửa */
+.productListEdit {
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: #3bb077;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.productListEdit:hover {
+  background-color: #339966;
+  transform: scale(1.05);
+}
+
+/* Nút xóa */
+.productListDelete {
+  color: red;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.3s;
+}
+
+.productListDelete:hover {
+  color: darkred;
+  transform: scale(1.2);
+}
+
+/* Bảng hiển thị danh sách */
+.MuiDataGrid-root {
+  background-color: white;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+}
+
+.MuiDataGrid-cell {
+  padding: 8px 16px;
+}
+
+.MuiDataGrid-columnHeader {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.MuiDataGrid-columnHeaderTitle {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.MuiDataGrid-row:hover {
+  background-color: #f1f1f1;
+}

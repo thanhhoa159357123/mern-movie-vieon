@@ -1,14 +1,16 @@
 import { ArrowBackOutlined } from "@mui/icons-material";
 import "./watch.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Watch = () => {
+  const location = useLocation(); // Lấy location
+  const { movie } = location.state || {};
   return (
     <div className="watch">
-      <Link to="/">
+      <Link to="/" className="link">
         <div className="back">
           <ArrowBackOutlined />
-          Home
+          <span>Home</span>
         </div>
       </Link>
       <video
@@ -16,7 +18,7 @@ const Watch = () => {
         autoPlay
         progress
         controls
-        src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+        src={movie.video}
       />
     </div>
   );

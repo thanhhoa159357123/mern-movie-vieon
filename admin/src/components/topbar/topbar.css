@@ -1,0 +1,64 @@
+.topbar {
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.topbarWrapper {
+  height: 100%;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 30px;
+  color: darkblue;
+  cursor: pointer;
+}
+
+.topRight {
+  display: flex;
+  align-items: center;
+}
+
+.usernameWrapper {
+  display: flex;
+  flex-direction: column; /* Đặt các phần tử theo chiều dọc */
+  align-items: center;
+  position: relative; /* Để có thể dùng absolute cho logoutButton */
+  cursor: pointer;
+}
+
+.username {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.logoutButton {
+  display: none; /* Mặc định ẩn nút Logout */
+  position: absolute; /* Đặt logoutButton ở vị trí tuyệt đối */
+  top: 100%; /* Đặt nó ngay dưới username */
+  margin-top: 5px; /* Tạo khoảng cách giữa username và logout */
+  padding: 5px 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.usernameWrapper:hover .logoutButton, /* Khi hover vào usernameWrapper */
+.logoutButton:hover { /* Khi hover vào logoutButton */
+  display: inline-block; /* Hiển thị logout khi hover vào wrapper hoặc button */
+}
+
+.logoutButton:hover {
+  background-color: #d32f2f; /* Thêm hiệu ứng hover cho nút logout */
+}

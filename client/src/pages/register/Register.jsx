@@ -1,68 +1,91 @@
 import axios from "axios";
-import { useRef } from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./register.scss";
 
 const Register = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
+  // Hooks cho state, có thể dùng để quản lý lỗi nếu cần
+  const [error, setError] = useState(null);  
   const navigate = useNavigate();
 
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  // Sử dụng useRef để tham chiếu các input
+  const phonenumberRef = useRef();
   const usernameRef = useRef();
+  const passwordRef = useRef();
+  const emailRef = useRef(); // Thêm ref cho email
 
-  const handleStart = () => {
-    setEmail(emailRef.current.value);
-  };
+  // Hàm xử lý đăng ký
   const handleFinish = async (e) => {
-    e.preventDefault();
-    setPassword(passwordRef.current.value);
-    setUsername(usernameRef.current.value);
+    e.preventDefault();  // Ngăn việc reload trang khi submit form
+
+    const phonenumber = phonenumberRef.current.value;
+    const username = usernameRef.current.value;
+    const password = passwordRef.current.value;
+    const email = emailRef.current.value; // Lấy giá trị email
+
     try {
-      await axios.post("auth/register", { email, username, password });
-      navigate("/login");
-    } catch (err) {}
+      // Gửi dữ liệu đăng ký lên server
+      await axios.post("auth/register", {
+        phonenumber,
+        username,
+        password,
+        email, // Gửi email cùng với các thông tin khác
+      });
+      navigate("/login");  // Chuyển hướng người dùng tới trang đăng nhập sau khi đăng ký thành công
+    } catch (err) {
+      setError(err.response?.data?.message || "Đăng ký không thành công. Vui lòng thử lại.");
+    }
   };
+
   return (
     <div className="register">
       <div className="top">
-        <div className="wrapper">
-          <img
-            className="logo"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
-            alt=""
-          />
-          <button className="loginButton">Sign In</button>
-        </div>
+        <Link to="/" className="link">
+          <span>VieON</span>
+        </Link>
       </div>
       <div className="container">
-        <h1>Unlimited movies, TV shows, and more.</h1>
-        <h2>Watch anywhere. Cancel anytime.</h2>
-        <p>
-          Ready to watch? Enter your email to create or restart your membership.
-        </p>
-        {!email ? (
-          <div className="input">
-            <input type="email" placeholder="email address" ref={emailRef} />
-            <button className="registerButton" onClick={handleStart}>
-              Get Started
-            </button>
-          </div>
-        ) : (
-          <form className="input">
-            <input type="username" placeholder="username" ref={usernameRef} />
-            <input type="password" placeholder="password" ref={passwordRef} />
-            <button className="registerButton" onClick={handleFinish}>
-              Start
-            </button>
-          </form>
-        )}
+        <form onSubmit={handleFinish}> {/* Sử dụng onSubmit để tránh reload trang */}
+          <p>Đăng ký</p>
+          <input
+            type="tel"
+            placeholder="Số điện thoại"
+            ref={phonenumberRef}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Tên người dùng"
+            ref={usernameRef}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Mật khẩu"
+            ref={passwordRef}
+            required
+          />
+          <input
+            type="email"  
+            placeholder="Email"
+            ref={emailRef}
+            required
+          />
+          {error && <div className="error">{error}</div>}  {/* Hiển thị thông báo lỗi nếu có */}
+
+          <span>
+            Bạn đã có tài khoản ? 
+            <Link to="/login" className="link">
+              <span className="login_page"> Hãy Đăng Nhập.</span>
+            </Link>
+          </span>
+          <button type="submit" className="registerButton"> {/* Chú ý sử dụng type="submit" */}
+            Bắt đầu
+          </button>
+        </form>
       </div>
     </div>
   );
-}
+};
 
-export default Register
+export default Register;

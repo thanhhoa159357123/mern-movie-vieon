@@ -1,6 +1,8 @@
 .watch {
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
+  position: relative;
 
   .back {
     display: flex;
@@ -11,6 +13,9 @@
     color: white;
     cursor: pointer;
     z-index: 2;
+    span {
+      margin-left: 5px;
+    }
   }
 
   .video {

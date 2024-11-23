@@ -1,0 +1,56 @@
+.search_page {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: var(--main-color);
+
+  .top {
+    padding: 20px 25px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #fff;
+
+    span {
+      &:hover {
+        color: green;
+      }
+    }
+  }
+
+  .container {
+    align-items: center; /* Canh giữa tất cả các phần tử con */
+    flex-direction: column; /* Đặt các phần tử trong container theo chiều dọc */
+    padding: 30px;
+    color: #fff;
+
+    .result_film {
+      display: flex;
+      flex-wrap: wrap; /* Cho phép các phần tử xuống dòng nếu không đủ không gian */
+      gap: 20px; /* Khoảng cách giữa các item */
+
+      .movieItem {
+        width: 300px; /* Đảm bảo mỗi item có kích thước cố định */
+        text-align: center;
+
+        img {
+          width: 100%; /* Đảm bảo ảnh luôn chiếm hết chiều rộng của .movieItem */
+          height: 200px;
+          border-radius: 5px;
+        }
+
+        span {
+          display: block;
+          margin-top: 10px;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .error {
+      color: red;
+      font-size: 16px;
+    }
+  }
+}

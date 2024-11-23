@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 import ListItem from "../listItem/ListItem";
 import "./list.scss";
 
-const List = ({ list }) => {
+const List = ({ list, user }) => {
   const [isMoved, setIsMoved] = useState(false);
   const [slideNumber, setSlideNumber] = useState(0);
 
@@ -35,7 +35,7 @@ const List = ({ list }) => {
         />
         <div className="container" ref={listRef}>
           {list.content.map((item, i) => (
-            <ListItem key={i} index={i} item={item} />
+            <ListItem key={i} index={i} item={item} user={user}/>
           ))}
         </div>
         <ArrowForwardIosOutlined

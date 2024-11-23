@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { login } from "../../authContext/apiCalls";
 import { AuthContext } from "../../authContext/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.scss";
 
 const Login = () => {
@@ -13,37 +13,35 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      // Xóa thông báo lỗi trước đó
-      setErrorMessage("");
-
-      // Gọi hàm login và xử lý dispatch
-      const result = await login({ phonenumber, password }, dispatch);
-      if (!result.success) {
-        setErrorMessage(result.message); // Hiển thị lỗi nếu có
-      } else {
-        navigate("/", { state: { phonenumber } }); // Điều hướng đến trang chủ nếu đăng nhập thành công
-        // navigate("/", {phonenumber})
-      }
-    } catch (error) {
-      console.error("Đăng nhập thất bại:", error);
-      setErrorMessage("Đăng nhập thất bại. Vui lòng thử lại!");
+  
+    // Kiểm tra các trường bắt buộc
+    if (!phonenumber.trim()) {
+      setErrorMessage("Vui lòng nhập số điện thoại.");
+      return;
+    }
+    if (!password.trim()) {
+      setErrorMessage("Vui lòng nhập mật khẩu.");
+      return;
+    }
+  
+    // Gọi API đăng nhập nếu không thiếu trường nào
+    const result = await login({ phonenumber, password }, dispatch);
+    if (result.success) {
+      navigate("/", dispatch);
+    } else {
+      setErrorMessage(result.message || "Đăng nhập thất bại. Vui lòng thử lại!");
     }
   };
   return (
     <div className="login">
       <div className="top">
-        <div className="wrapper">
-          <img
-            className="logo"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
-            alt=""
-          />
-        </div>
+        <Link to="/" className="link">
+          <span>VieON</span>
+        </Link>
       </div>
       <div className="container">
         <form>
-          <h1>Sign In</h1>
+          <p>Đăng nhập</p>
           <input
             type="email"
             placeholder="Phone number"
@@ -54,13 +52,21 @@ const Login = () => {
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="loginButton" onClick={handleLogin}>
-            Sign In
-          </button>
-          {errorMessage && <p className="error">{errorMessage}</p>}
+          {/* Error Alert */}
+          {errorMessage && (
+            <div className="alert">
+              <strong>Lỗi:</strong> {errorMessage}
+            </div>
+          )}
           <span>
-            New to Netflix? <b>Sign up now.</b>
+            Chưa có tài khoản ?
+            <Link to="/register" className="link">
+              <span className="register_page"> Hãy Đăng Kí !</span>
+            </Link>
           </span>
+          <button className="loginButton" onClick={handleLogin}>
+            Đăng nhập
+          </button>
         </form>
       </div>
     </div>

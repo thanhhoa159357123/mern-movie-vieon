@@ -9,7 +9,6 @@ export const login = async (user, dispatch) => {
     return { success: true }; // Trả về thành công
   } catch (err) {
     dispatch(loginFailure());
-    console.error("Chi tiết lỗi đăng nhập:", err.response?.data); // Ghi chi tiết lỗi
     return { success: false, message: err.response?.data || "Login failed" }; // Trả về lỗi
   }
 };

@@ -68,19 +68,43 @@
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
       }
-      .icon {
-        margin: 0px 15px;
-        cursor: pointer;
-        &:hover {
-          color: #45a049; /* Màu khi hover */
-          transform: translateY(-1px); /* Hiệu ứng di chuyển lên */
+
+      .search {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        .searchInput {
+          width: 0;
+          height: 30px;
+          padding: 5px 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          transition: all 1.5s ease-in-out, opacity 1.5s ease-in-out;
+          position: absolute; /* Đặt vị trí tương đối */
+          left: 0; /* Ban đầu nằm bên cạnh icon */
+          opacity: 0; /* Ban đầu ẩn */
+
+          &.show {
+            width: 200px; /* Đặt chiều rộng cho input */
+            opacity: 1; /* Hiển thị rõ */
+            left: -210px; /* Vị trí bên trái của icon */
+          }
         }
 
-        /* Hiệu ứng khi nhấn vào */
-        &:active {
-          color: #3e8e41; /* Màu khi nhấn */
-          transform: translateY(0); /* Trả lại vị trí ban đầu */
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        .icon {
+          margin-left: 15px;
+          margin-right: 15px;
+          cursor: pointer;
+          z-index: 10; /* Đảm bảo icon nằm trên input */
+          &:hover {
+            color: #45a049; /* Màu khi hover */
+            transform: translateY(-1px); /* Hiệu ứng di chuyển lên */
+          }
+          &:active {
+            color: #3e8e41; /* Màu khi nhấn */
+            transform: translateY(0); /* Trả lại vị trí ban đầu */
+          }
         }
       }
 
@@ -97,6 +121,13 @@
           display: none;
           background-color: var(--main-color);
           border-radius: 5px;
+          .setting_account {
+            border-bottom: 1px solid #414141;
+            padding-bottom: 5px;
+            &:hover {
+              color: green;
+            }
+          }
         }
 
         span {

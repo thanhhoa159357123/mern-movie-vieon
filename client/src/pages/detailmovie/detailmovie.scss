@@ -1,0 +1,129 @@
+.detailmovie {
+  width: 100%;
+  height: 120vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--main-color);
+  color: white;
+
+  .top {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    margin-bottom: 100px; // Thêm khoảng trống dưới navbar để tách navbar và phần nội dung
+  }
+
+  // Phần nội dung chính
+  .container {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px; // Thêm khoảng trống trên container để tạo sự tách biệt
+
+    .img_movie {
+      flex: 0 0 30%; // Chiếm 30% chiều rộng container
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+
+      img {
+        width: 100%; // Ảnh luôn chiếm đủ chiều rộng của khung
+        height: auto; // Chiều cao tự động theo tỷ lệ gốc
+        max-height: 100%; // Chiều cao không vượt quá khung chứa
+        object-fit: contain; // Hiển thị toàn bộ nội dung ảnh mà không bị cắt
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    // Phần mô tả và hành động
+    .content_movie {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+
+      .content {
+        margin-bottom: 20px;
+
+        .desc {
+          font-size: 1.2rem;
+          line-height: 1.6;
+          margin-bottom: 15px;
+        }
+
+        .info {
+          display: flex;
+          flex-direction: row; // Sắp xếp các phần tử theo chiều dọc
+          gap: 10px; // Khoảng cách giữa các mục
+          font-size: 1rem; // Tăng font cho dễ nhìn
+          color: var(--text-color-secondary);
+
+          span {
+            padding: 6px 12px;
+            border-radius: 8px;
+            width: auto;
+            background-color: rgba(255, 255, 255, 0.15);
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+            &:hover {
+              background-color: var(--secondary-color); // Đổi màu nền khi hover
+              color: white; // Đổi màu chữ khi hover
+            }
+          }
+
+          .age_limit {
+            color: white;
+            font-weight: bold;
+          }
+        }
+      }
+
+      .buttons {
+        display: flex;
+        gap: 15px;
+
+        .button_watch,
+        .button_add {
+          font-size: 1rem;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: transform 0.3s ease, background-color 0.3s ease,
+            color 0.3s ease;
+        }
+
+        .button_watch {
+          background-color: var(--primary-color);
+          color: white;
+
+          &:hover {
+            background-color: green;
+            transform: scale(1.1);
+          }
+        }
+
+        .button_add {
+          background-color: transparent;
+          color: var(--text-color);
+          border: 2px solid var(--text-color);
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+}
