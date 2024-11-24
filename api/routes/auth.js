@@ -29,10 +29,10 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ phonenumber: req.body.phonenumber });
-
-    // Nếu người dùng không tồn tại, gửi phản hồi và dừng tiến trình
     if (!user) {
-      return res.status(401).json("Sai mật khẩu hoặc tên đăng nhập!");
+      return res
+        .status(401)
+        .json("Tài khoản chưa tồn tại bạn có muốn đăng ký không ? ");
     }
 
     // Giải mã mật khẩu và kiểm tra tính hợp lệ

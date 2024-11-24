@@ -3,7 +3,7 @@ import "../listItem/listItem.scss";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const ListItem = ({ index, item, user }) => {
+const ListItem = ({ item, user }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [movie, setMovie] = useState({});
 

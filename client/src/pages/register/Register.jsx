@@ -21,7 +21,7 @@ const Register = () => {
     const phonenumber = phonenumberRef.current.value;
     const username = usernameRef.current.value;
     const password = passwordRef.current.value;
-    const email = emailRef.current.value; // Lấy giá trị email
+    const email = emailRef.current.value;
 
     try {
       // Gửi dữ liệu đăng ký lên server

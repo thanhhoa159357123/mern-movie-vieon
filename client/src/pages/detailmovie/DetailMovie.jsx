@@ -21,13 +21,11 @@ const DetailMovie = () => {
         alert("Không thể xác định phim. Vui lòng thử lại.");
         return;
       }
-
       const token = JSON.parse(localStorage.getItem("user"))?.accessToken;
       if (!token) {
         alert("Không thể xác thực người dùng. Vui lòng đăng nhập lại.");
         return;
       }
-
       const response = await axios.put(
         `/users/update/watchlist/${user._id}`,
         { movieId: movie._id },
@@ -37,7 +35,6 @@ const DetailMovie = () => {
           },
         }
       );
-
       if (response.status === 200) {
         alert("Đã thêm phim vào danh sách yêu thích!");
         setUserList((prevList) => [...prevList, movie]);
